@@ -35,11 +35,35 @@ const secondCall = (name) => {
         .then(data => {
             const { sprites } = data;
             const { other } = sprites;
-            console.log(data.weight);
+            const {types} = data;
+            //gestion types
+            if(Object.keys(types).length ===1){
+                type1.innerText="";
+                type2.innerText="";
+                type2.className="none";
+
+                type1.innerText=types[0].type.name.toUpperCase()
+                type1.className = types[0].type.name;
+            }
+            else if(Object.keys(types).length ===2){
+                type1.innerText="";
+                type2.innerText="";
+                
+                type1.innerText=types[0].type.name.toUpperCase()
+                type1.className = types[0].type.name
+
+                type2.innerText=types[1].type.name.toUpperCase()
+                type2.className = types[1].type.name
+            }
+            //
+
+            //gestion images et données
             console.log(data.name);
             imgpkmn.src = other["official-artwork"].front_default;
+            nmbpkmn.innerHTML = "N° " + data.id;
             namepkmn.innerText = "Name : " + data.name.toUpperCase();
-            weightpkmn.innerText = "Weight : " + (data.weight * 0.1) + " Kg";
+            heightpkm.innerHTML = "Height : " + (data.height /10) + " m" 
+            weightpkmn.innerText = "Weight : " + (data.weight /10) + " Kg";
             infopkmn.style.visibility = "visible"
 
 
@@ -137,14 +161,21 @@ divpaginate.appendChild(btnnext);
 
 btnnext.addEventListener("click", () => {
     offset += 20;
+    if(offset>1300){
+        offset = 1300
+    }
     firstCall(offset);
-    console.log(offset);
+
 })
 
 btnprevious.addEventListener("click", () => {
     offset -= 20;
+    if(offset<0){
+        offset = 0
+    }
+
     firstCall(offset);
-    console.log(offset);
+
 })
 
 //div info pkmn
@@ -153,17 +184,25 @@ infopkmn.setAttribute("id", "infopkmn");
 const txtpkmn = document.createElement("div");
 txtpkmn.setAttribute("id", "txtpkmn");
 const imgpkmn = document.createElement("img");
+const nmbpkmn = document.createElement("p");
 const namepkmn = document.createElement("p");
+const heightpkm = document.createElement("p");
 const weightpkmn = document.createElement("p");
+const typesdiv = document.createElement("div");
+typesdiv.setAttribute("id","types");
 const type1 = document.createElement("p");
 const type2 = document.createElement("p");
 
 div.appendChild(infopkmn);
 infopkmn.appendChild(imgpkmn);
+txtpkmn.appendChild(nmbpkmn);
 txtpkmn.appendChild(namepkmn);
+txtpkmn.appendChild(heightpkm)
 txtpkmn.appendChild(weightpkmn);
-txtpkmn.appendChild(type1);
-txtpkmn.appendChild(type2);
+typesdiv.appendChild(type1);
+typesdiv.appendChild(type2);
+txtpkmn.appendChild(typesdiv);
+
 infopkmn.appendChild(txtpkmn);
 infopkmn.style.visibility = "hidden";
 
