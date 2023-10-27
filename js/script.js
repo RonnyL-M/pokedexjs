@@ -4,8 +4,7 @@ const firstCall = (offset) => {
     fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`)
         .then(response => response.json())
         .then(data => {
-            const { results } = data;
-
+            const { results } = data;   
             listpkmn.innerHTML = "";
             results.forEach(element => {
 
@@ -76,6 +75,7 @@ const btns = [];
 const btn = document.getElementsByClassName("pokebtn");
 let offset = 0;
 
+
 //header
 const header = document.createElement("header");
 document.body.appendChild(header)
@@ -129,7 +129,7 @@ div.appendChild(searchbar_div);
 const listpkmn = document.createElement("div");
 listpkmn.setAttribute("id", "listpkmn");
 div.appendChild(listpkmn);
-firstCall();
+firstCall(offset);
 
 
 //function btn
@@ -161,8 +161,8 @@ divpaginate.appendChild(btnnext);
 
 btnnext.addEventListener("click", () => {
     offset += 20;
-    if(offset>1300){
-        offset = 1300
+    if(offset>1280){
+        offset = 0
     }
     firstCall(offset);
 
@@ -171,7 +171,7 @@ btnnext.addEventListener("click", () => {
 btnprevious.addEventListener("click", () => {
     offset -= 20;
     if(offset<0){
-        offset = 0
+        offset = 1280;
     }
 
     firstCall(offset);
