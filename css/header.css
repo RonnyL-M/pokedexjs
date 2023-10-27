@@ -1,0 +1,11 @@
+header {
+    margin: 0;padding: 0;
+    background-color: black;
+}
+
+header h1{
+    color: white;
+    font-family: 'Pokemon Solid', sans-serif;
+    text-align: center;
+    
+}

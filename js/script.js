@@ -8,7 +8,7 @@ const firstCall = (offset) => {
 
             listpkmn.innerHTML = "";
             results.forEach(element => {
-            
+
                 //pokemon.appendChild(pokename);
                 listpkmn.appendChild(createBtn(element.name));
 
@@ -20,7 +20,6 @@ const firstCall = (offset) => {
 
             btns.forEach((el) => {
                 el.addEventListener("click", () => {
-                    console.log(el.name);
                     secondCall(el.name);
 
                 })
@@ -38,9 +37,12 @@ const secondCall = (name) => {
             const { other } = sprites;
             console.log(data.weight);
             console.log(data.name);
-            imgpkmn.src = other["official-artwork"].front_default
-            namepkmn.innerText = "Name : "+ data.name.toUpperCase()
-            weightpkmn.innerText= "Weight : " + (data.weight * 0.1) +" Kg"
+            imgpkmn.src = other["official-artwork"].front_default;
+            namepkmn.innerText = "Name : " + data.name.toUpperCase();
+            weightpkmn.innerText = "Weight : " + (data.weight * 0.1) + " Kg";
+            infopkmn.style.visibility = "visible"
+
+
         })
 
 }
@@ -50,10 +52,17 @@ const btns = [];
 const btn = document.getElementsByClassName("pokebtn");
 let offset = 0;
 
+//header
+const header = document.createElement("header");
+document.body.appendChild(header)
+const title = document.createElement("h1")
+title.innerText = "MyPokeDex.Js"
+header.appendChild(title)
+
 
 //creation des main div
 const div = document.createElement("div");
-div.setAttribute("id", "main")
+div.setAttribute("id", "main");
 
 // //test ajout element
 // const tag = document.createElement("p");
@@ -64,7 +73,8 @@ document.body.appendChild(div)
 
 //input de recherche
 const searchbar_div = document.createElement("div");
-const search_input = () =>{
+searchbar_div.setAttribute("id", "searchbar_div");
+const search_input = () => {
     const input = document.createElement("input");
     input.type = "text"
     input.placeholder = "Enter your Pokemon:";
@@ -74,12 +84,12 @@ const search_input = () =>{
 }
 const submit_btn = () => {
     const btn = document.createElement("button");
-    btn.textContent = "Search";
-    btn.id= "submit_btn";
+    btn.textContent = "Go !";
+    btn.id = "submit_btn";
     btn.name = "submit_btn";
-    btn.addEventListener('click',()=>{
+    btn.addEventListener('click', () => {
         const name = document.getElementById("search_input");
-        
+
         secondCall(name.value);
     })
     searchbar_div.appendChild(btn);
@@ -93,7 +103,7 @@ div.appendChild(searchbar_div);
 
 //liste des pkmn
 const listpkmn = document.createElement("div");
-div.setAttribute("id", "listpkmn");
+listpkmn.setAttribute("id", "listpkmn");
 div.appendChild(listpkmn);
 firstCall();
 
@@ -104,7 +114,7 @@ createBtn = (name) => {
     button.classList.add("pokebtn");
     button.name = name;
     button.value = name;
-    button.textContent = name;
+    button.textContent = name.toUpperCase();
     btns.push(button);
     return button;
 
@@ -112,14 +122,14 @@ createBtn = (name) => {
 
 //paginate
 const divpaginate = document.createElement("div");
-div.setAttribute("id", "paginate");
+divpaginate.setAttribute("id", "paginate");
 const btnprevious = document.createElement("button");
 btnprevious.name = "previous";
-btnprevious.textContent = "previous"
+btnprevious.textContent = "PREVIOUS"
 btnprevious.setAttribute("id", "previous")
 const btnnext = document.createElement("button");
 btnnext.name = "next";
-btnnext.textContent = "next";
+btnnext.textContent = "NEXT";
 btnnext.setAttribute("id", "next");
 div.appendChild(divpaginate);
 divpaginate.appendChild(btnprevious);
@@ -138,19 +148,24 @@ btnprevious.addEventListener("click", () => {
 })
 
 //div info pkmn
-const infopkmn = document.createElement("div")
-const imgpkmn = document.createElement("img")
-const namepkmn = document.createElement("p")
-const weightpkmn = document.createElement("p")
-const type1 = document.createElement("p")
-const type2 = document.createElement("p")
+const infopkmn = document.createElement("div");
+infopkmn.setAttribute("id", "infopkmn");
+const txtpkmn = document.createElement("div");
+txtpkmn.setAttribute("id", "txtpkmn");
+const imgpkmn = document.createElement("img");
+const namepkmn = document.createElement("p");
+const weightpkmn = document.createElement("p");
+const type1 = document.createElement("p");
+const type2 = document.createElement("p");
 
 div.appendChild(infopkmn);
 infopkmn.appendChild(imgpkmn);
-infopkmn.appendChild(namepkmn);
-infopkmn.appendChild(weightpkmn);
-infopkmn.appendChild(type1);
-infopkmn.appendChild(type2);
+txtpkmn.appendChild(namepkmn);
+txtpkmn.appendChild(weightpkmn);
+txtpkmn.appendChild(type1);
+txtpkmn.appendChild(type2);
+infopkmn.appendChild(txtpkmn);
+infopkmn.style.visibility = "hidden";
 
 
 

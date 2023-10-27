@@ -1,0 +1,46 @@
+#paginate {
+    display: flex;
+    justify-content: center;
+
+
+}
+
+#paginate button {
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color:darkslategray;
+    width: 200px;
+    font-family: sans-serif;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+
+
+}
+
+#listpkmn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#listpkmn button {
+
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(45, 45, 45);
+    color: white;
+    font-family: 'Stilu', sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    transform: skew(-10deg);
+
+    cursor: pointer;
+    width: 250px;
+    height: 75px;
+
+}

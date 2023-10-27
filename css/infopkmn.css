@@ -1,0 +1,34 @@
+#infopkmn{
+    margin-top: 20px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    
+
+}
+
+#infopkmn img{
+    background-color: lightgray;
+    border:solid;
+    border-radius: 20px;
+    border-color: black;
+}
+
+
+#txtpkmn{
+    margin-left: 5px;
+    background-color: whitesmoke;
+    border:solid;
+    border-radius: 20px;
+    border-color: black;
+}
+#txtpkmn p{
+    margin-left: 5px;
+    font-family: 'Stilu', sans-serif;
+    font-size: larger;
+    width: 400px;
+}

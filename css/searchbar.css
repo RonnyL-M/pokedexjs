@@ -1,0 +1,26 @@
+#searchbar_div{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+#searchbar_div input[type=text]{
+    font-size:medium ; 
+    font-family: sans-serif;
+    border:1px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 3px;
+}
+
+#searchbar_div button{
+    margin-left: 3px;
+    background-color: darkslategray;
+    font-family: 'Pokemon Solid', sans-serif;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    padding-left: 10px; 
+    padding-right: 10px; 
+
+}
